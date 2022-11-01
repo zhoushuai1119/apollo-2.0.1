@@ -35,7 +35,13 @@
 package com.ctrip.framework.foundation.internals.provider;
 
 import com.ctrip.framework.apollo.core.utils.DeferredLoggerFactory;
+import com.ctrip.framework.foundation.internals.Utils;
+import com.ctrip.framework.foundation.internals.io.BOMInputStream;
+import com.ctrip.framework.foundation.spi.provider.Provider;
+import com.ctrip.framework.foundation.spi.provider.ServerProvider;
 import com.google.common.base.Strings;
+import org.slf4j.Logger;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -43,18 +49,12 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
-import com.ctrip.framework.foundation.internals.Utils;
-import com.ctrip.framework.foundation.internals.io.BOMInputStream;
-import com.ctrip.framework.foundation.spi.provider.Provider;
-import com.ctrip.framework.foundation.spi.provider.ServerProvider;
-import org.slf4j.Logger;
-
 public class DefaultServerProvider implements ServerProvider {
 
   private static final Logger logger = DeferredLoggerFactory.getLogger(DefaultServerProvider.class);
 
-  static final String DEFAULT_SERVER_PROPERTIES_PATH_ON_LINUX = "/opt/settings/server.properties";
-  static final String DEFAULT_SERVER_PROPERTIES_PATH_ON_WINDOWS = "C:/opt/settings/server.properties";
+  static final String DEFAULT_SERVER_PROPERTIES_PATH_ON_LINUX = "/app/settings/server.properties";
+  static final String DEFAULT_SERVER_PROPERTIES_PATH_ON_WINDOWS = "C:/app/settings/server.properties";
   private String m_env;
   private String m_dc;
 
@@ -167,10 +167,12 @@ public class DefaultServerProvider implements ServerProvider {
 
   private void initEnvType() {
     // 1. Try to get environment from JVM system property
-    m_env = System.getProperty("env");
+    //m_env = System.getProperty("env");
+    //修改读取env为spring.profiles.active
+    m_env = System.getProperty("spring.profiles.active");
     if (!Utils.isBlank(m_env)) {
       m_env = m_env.trim();
-      logger.info("Environment is set to [{}] by JVM system property 'env'.", m_env);
+      logger.info("Environment is set to [{}] by JVM system property 'spring.profiles.active'.", m_env);
       return;
     }
 

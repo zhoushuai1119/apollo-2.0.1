@@ -16,18 +16,18 @@
  */
 package com.ctrip.framework.apollo.core;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import com.ctrip.framework.apollo.BaseIntegrationTest;
 import com.ctrip.framework.apollo.core.enums.Env;
-import com.ctrip.framework.apollo.core.internals.LegacyMetaServerProvider;
 import com.ctrip.framework.apollo.core.spi.MetaServerProvider;
 import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.servlet.http.HttpServletResponse;
 import org.junit.After;
 import org.junit.Test;
+
+import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class MetaDomainTest extends BaseIntegrationTest {
 
@@ -91,7 +91,7 @@ public class MetaDomainTest extends BaseIntegrationTest {
 
     @Override
     public int getOrder() {
-      return LegacyMetaServerProvider.ORDER - 1;// just in front of LegacyMetaServerProvider
+      return - 1;// just in front of LegacyMetaServerProvider
     }
   }
 }

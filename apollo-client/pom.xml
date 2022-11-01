@@ -93,5 +93,10 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- end of test -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-context</artifactId>
+			<version>RELEASE</version>
+		</dependency>
 	</dependencies>
 </project>
