@@ -41,7 +41,7 @@ server:
 
 logging:
   file:
-    name: /opt/logs/100003173/apollo-portal.log
+    name: /app/logs/apollo/portal/apollo-portal.log
 
 management:
   health:
