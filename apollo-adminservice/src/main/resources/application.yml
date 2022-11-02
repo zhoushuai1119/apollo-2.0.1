@@ -44,7 +44,7 @@ eureka:
     preferIpAddress: true
     status-page-url-path: /info
     health-check-url-path: /health
-#    ip-address: 139.196.208.53
+    ip-address: 139.196.208.53
   client:
     serviceUrl:
       # This setting will be overridden by eureka.service.url setting from ApolloConfigDB.ServerConfig or System Property
