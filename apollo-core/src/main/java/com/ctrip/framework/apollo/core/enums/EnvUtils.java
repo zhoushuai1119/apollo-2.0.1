@@ -34,29 +34,21 @@ public final class EnvUtils {
      * @return the matching {@link Env} for the given String
      */
     public static Env transformEnv(String envName) {
+
         if (StringUtils.isBlank(envName)) {
-            return null;
+            return Env.UNKNOWN;
         }
 
-        switch (envName.trim().toUpperCase()) {
-            case "LOCAL":
-                return Env.LOCAL;
-            case "DEV":
-                return Env.DEV;
-            case "FAT":
-            case "FWS":
-                return Env.FAT;
-            case "UAT":
-                return Env.UAT;
-            case "LPT":
-                return Env.LPT;
-            case "PRO":
-            case "PROD":
-                return Env.PRO;
-            case "TOOLS":
-                return Env.TOOLS;
-            default:
-                return null;
+        String cleanedEnvName = envName.trim().toUpperCase();
+
+        if (cleanedEnvName.equals("PROD")) {
+            return Env.PRO;
+        }
+
+        try {
+            return Env.valueOf(cleanedEnvName);
+        } catch (IllegalArgumentException e) {
+            return Env.UNKNOWN;
         }
     }
 

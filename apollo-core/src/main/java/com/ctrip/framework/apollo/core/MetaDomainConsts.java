@@ -59,9 +59,8 @@ public class MetaDomainConsts {
         final Properties env = System.getProperties();
         domains.put(Env.LOCAL, env.getProperty("local_meta", prop.getProperty("local.meta", DEFAULT_META_URL)));
         domains.put(Env.DEV, env.getProperty("dev_meta", prop.getProperty("dev.meta", DEFAULT_META_URL)));
-        domains.put(Env.FAT, env.getProperty("fat_meta", prop.getProperty("fat.meta", DEFAULT_META_URL)));
-        domains.put(Env.UAT, env.getProperty("uat_meta", prop.getProperty("uat.meta", DEFAULT_META_URL)));
-        domains.put(Env.LPT, env.getProperty("lpt_meta", prop.getProperty("lpt.meta", DEFAULT_META_URL)));
+        domains.put(Env.PRE, env.getProperty("pre_meta", prop.getProperty("pre.meta", DEFAULT_META_URL)));
+        domains.put(Env.YC, env.getProperty("yc_meta", prop.getProperty("yc.meta", DEFAULT_META_URL)));
         domains.put(Env.PRO, env.getProperty("pro_meta", prop.getProperty("pro.meta", DEFAULT_META_URL)));
     }
 

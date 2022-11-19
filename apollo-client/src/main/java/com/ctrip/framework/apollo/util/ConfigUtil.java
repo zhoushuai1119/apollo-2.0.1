@@ -30,6 +30,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.ctrip.framework.apollo.core.enums.Env.UNKNOWN;
 import static com.ctrip.framework.apollo.util.factory.PropertiesFactory.APOLLO_PROPERTY_ORDER_ENABLE;
 
 /**
@@ -149,11 +150,8 @@ public class ConfigUtil {
      */
     public Env getApolloEnv() {
         Env env = EnvUtils.transformEnv(Foundation.server().getEnvType());
-        if (env == null) {
-            String path = this.isOSWindows() ? "C:\\app\\settings\\server.properties" : "/app/settings/server.properties";
-            String message = String.format("env is not set, please make sure it is set in %s!", path);
-            logger.error(message);
-            throw new ApolloConfigException(message);
+        if (env == UNKNOWN) {
+            throw new ApolloConfigException("env is not set or setting error, please make sure it is set true");
         } else {
             return env;
         }
