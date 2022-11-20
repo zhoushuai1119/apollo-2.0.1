@@ -151,7 +151,8 @@ public class ConfigUtil {
     public Env getApolloEnv() {
         Env env = EnvUtils.transformEnv(Foundation.server().getEnvType());
         if (env == UNKNOWN) {
-            throw new ApolloConfigException("env is not set or setting error, please make sure it is set true");
+            final String errorMsg = String.format("Env %s is invalid", Foundation.server().getEnvType());
+            throw new ApolloConfigException(errorMsg + ", please make sure it is set true");
         } else {
             return env;
         }
