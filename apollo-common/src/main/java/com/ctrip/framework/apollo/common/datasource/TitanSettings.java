@@ -26,14 +26,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class TitanSettings {
 
+    @Value("${dev.titan.url:}")
+    private String devTitanUrl;
+
     @Value("${pre.titan.url:}")
     private String preTitanUrl;
 
     @Value("${yc.titan.url:}")
     private String ycTitanUrl;
 
+    @Value("${gr.titan.url:}")
+    private String grTitanUrl;
+
     @Value("${pro.titan.url:}")
     private String proTitanUrl;
+
+    @Value("${dev.titan.dbname:}")
+    private String devTitanDbname;
 
     @Value("${pre.titan.dbname:}")
     private String preTitanDbname;
@@ -41,16 +50,23 @@ public class TitanSettings {
     @Value("${yc.titan.dbname:}")
     private String ycTitanDbname;
 
+    @Value("${gr.titan.dbname:}")
+    private String grTitanDbname;
+
     @Value("${pro.titan.dbname:}")
     private String proTitanDbname;
 
     public String getTitanUrl() {
         Env env = EnvUtils.transformEnv(Foundation.server().getEnvType());
         switch (env) {
+            case DEV:
+                return devTitanUrl;
             case PRE:
                 return preTitanUrl;
             case YC:
                 return ycTitanUrl;
+            case GR:
+                return grTitanUrl;
             case PRO:
                 return proTitanUrl;
             default:
@@ -61,10 +77,14 @@ public class TitanSettings {
     public String getTitanDbname() {
         Env env = EnvUtils.transformEnv(Foundation.server().getEnvType());
         switch (env) {
+            case DEV:
+                return devTitanDbname;
             case PRE:
                 return preTitanDbname;
             case YC:
                 return ycTitanDbname;
+            case GR:
+                return grTitanDbname;
             case PRO:
                 return proTitanDbname;
             default:

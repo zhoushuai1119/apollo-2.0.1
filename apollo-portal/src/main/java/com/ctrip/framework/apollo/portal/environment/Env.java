@@ -53,6 +53,9 @@ public class Env {
 
     public static final Env YC = addEnvironment(
             com.ctrip.framework.apollo.core.enums.Env.YC.name());
+
+    public static final Env GR = addEnvironment(
+            com.ctrip.framework.apollo.core.enums.Env.GR.name());
     public static final Env PRO = addEnvironment(
             com.ctrip.framework.apollo.core.enums.Env.PRO.name());
     public static final Env UNKNOWN = addEnvironment(

@@ -36,7 +36,7 @@ import com.google.common.base.Preconditions;
  */
 public enum Env {
 
-    LOCAL, DEV, PRE, YC, PRO, UNKNOWN;
+    LOCAL, DEV, PRE, YC, GR, PRO, UNKNOWN;
 
     public static Env fromString(String env) {
         Env environment = EnvUtils.transformEnv(env);

@@ -29,9 +29,10 @@ rem meta server url, different environments should have different meta server ad
 set dev_meta="http://139.196.208.53:8080"
 set pre_meta="http://192.168.240.129:8080"
 set yc_meta="http://192.168.240.130:8080"
+set gr_meta="http://someIp:8080"
 set pro_meta="http://192.168.240.131:8080"
 
-set META_SERVERS_OPTS=-Ddev_meta=%dev_meta% -Dpre_meta=%pre_meta% -Dyc_meta=%yc_meta% -Dpro_meta=%pro_meta%
+set META_SERVERS_OPTS=-Ddev_meta=%dev_meta% -Dpre_meta=%pre_meta% -Dyc_meta=%yc_meta% -Dgr_meta=%gr_meta% -Dpro_meta=%pro_meta%
 
 rem =============== Please do not modify the following content ===============
 rem go to script directory
